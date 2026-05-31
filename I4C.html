@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ideate4Change — Master Document v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e0c0a;--bg2:#161310;--bg3:#1e1a15;--bg4:#252018;
+  --gold:#C9963A;--gold-lt:#E8B96A;--gold-dim:rgba(201,150,58,0.13);
+  --red:#A63228;--red-lt:#C94438;
+  --cream:#F2E8D5;--cream-dim:rgba(242,232,213,0.55);--cream-faint:rgba(242,232,213,0.18);
+  --muted:rgba(242,232,213,0.38);
+  --border:rgba(201,150,58,0.2);--border-lt:rgba(201,150,58,0.1);
+  --green:#4a7c4e;--green-lt:#7ab87f;
+  --blue:#3a5f8a;--blue-lt:#6a9fc8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--cream);font-family:'Outfit',sans-serif;font-weight:300;line-height:1.75;}
+
+/* NAV */
+.top-nav{position:sticky;top:0;z-index:100;background:rgba(14,12,10,0.97);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;padding:0 40px;}
+.nav-brand{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--cream);padding:16px 24px 16px 0;border-right:0.5px solid var(--border);margin-right:0;flex-shrink:0;}
+.nav-brand span{color:var(--gold);}
+.nav-tabs{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.nav-tab{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);padding:18px 20px;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap;}
+.nav-tab:hover{color:var(--cream-dim);}
+.nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+/* SECTION */
+.section-page{display:none;animation:fadeIn 0.25s ease;}
+.section-page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+/* COVER */
+.cover{min-height:85vh;background:var(--bg);display:flex;flex-direction:column;padding:52px 64px;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+.cover-grain{position:absolute;inset:0;pointer-events:none;opacity:0.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px;}
+.cover-rule-top{display:flex;justify-content:space-between;align-items:center;border-bottom:0.5px solid var(--border);padding-bottom:18px;}
+.cover-parent{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);}
+.cover-doctype{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);}
+.cover-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:60px 0 40px;}
+.cover-eyebrow{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;}
+.cover-rule-thin{width:48px;height:0.5px;background:var(--gold);margin-bottom:28px;}
+.cover-name{font-family:'Playfair Display',serif;font-size:clamp(52px,8vw,100px);font-weight:700;line-height:0.92;letter-spacing:-0.02em;color:var(--cream);margin-bottom:6px;}
+.cover-name .four{color:var(--gold);}
+.cover-name-change{font-family:'Playfair Display',serif;font-size:clamp(52px,8vw,100px);font-weight:400;font-style:italic;line-height:0.92;letter-spacing:-0.02em;color:var(--cream-dim);}
+.cover-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(16px,2vw,22px);color:var(--gold-lt);margin-top:32px;}
+.cover-sub{font-size:15px;color:var(--muted);margin-top:20px;max-width:600px;line-height:1.9;}
+.cover-sub em{color:var(--gold-lt);font-style:normal;}
+.cover-foot{display:flex;justify-content:space-between;align-items:flex-end;border-top:0.5px solid var(--border);padding-top:22px;}
+.cover-foot-left{font-size:12px;color:var(--muted);}
+.cover-foot-left span{color:var(--cream-dim);}
+.cover-foot-right{font-family:'Courier Prime',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;text-align:right;}
+
+/* WRAP */
+.wrap{max-width:880px;margin:0 auto;padding:72px 64px;}
+@media(max-width:680px){.wrap{padding:48px 24px;}.cover{padding:36px 24px;}.top-nav{padding:0 16px;}}
+
+/* SEC HEAD */
+.sec-head{margin-bottom:52px;padding-bottom:20px;border-bottom:0.5px solid var(--border);}
+.sec-label{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:700;color:var(--cream);letter-spacing:-0.02em;}
+.sec-desc{font-size:15px;color:var(--cream-dim);margin-top:14px;line-height:1.85;max-width:640px;}
+
+/* CHAPTER */
+.chapter{margin-bottom:68px;}
+.ch-head{display:flex;align-items:baseline;gap:18px;margin-bottom:28px;padding-bottom:12px;border-bottom:0.5px solid var(--border);}
+.ch-num{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.18em;color:var(--gold);flex-shrink:0;}
+.ch-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--cream);letter-spacing:-0.01em;}
+.label{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
+p{font-size:15px;color:var(--cream-dim);line-height:1.85;margin-bottom:14px;}
+p:last-child{margin-bottom:0;}
+em{color:var(--gold-lt);font-style:italic;}
+
+/* WORDMARK */
+.wm-block{background:var(--bg2);border:0.5px solid var(--border);border-radius:4px;padding:44px 40px;margin:20px 0;position:relative;overflow:hidden;}
+.wm-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);}
+.wm-parent{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block;}
+.wm-name{font-family:'Playfair Display',serif;font-size:clamp(36px,5.5vw,62px);font-weight:700;line-height:1;letter-spacing:-0.02em;color:var(--cream);}
+.wm-name .four{color:var(--gold);}
+.wm-short{font-family:'Courier Prime',monospace;font-size:11px;color:var(--muted);letter-spacing:0.12em;margin-top:14px;display:block;}
+.wm-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:var(--gold-lt);margin-top:20px;padding-top:20px;border-top:0.5px solid var(--border);}
+
+/* TAGLINES */
+.tagline-primary{font-family:'Playfair Display',serif;font-size:clamp(22px,3.5vw,36px);color:var(--cream);line-height:1.2;border-left:2px solid var(--gold);padding-left:22px;margin:20px 0 8px;letter-spacing:-0.01em;}
+.tagline-sec{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:var(--cream-dim);padding-left:24px;margin-bottom:18px;}
+.stamp{display:inline-block;font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--red-lt);border:0.5px solid var(--red);padding:5px 14px;border-radius:2px;}
+
+/* MANIFESTO */
+.manifesto{background:var(--bg2);border:0.5px solid var(--border);border-radius:4px;padding:36px 36px;margin:20px 0;position:relative;}
+.manifesto::before{content:'\201C';font-family:'Playfair Display',serif;font-size:100px;line-height:1;color:var(--gold);opacity:0.12;position:absolute;top:8px;left:18px;pointer-events:none;}
+.manifesto p{font-size:15px;color:var(--cream-dim);line-height:1.9;margin-bottom:16px;position:relative;}
+.manifesto p:last-child{margin-bottom:0;}
+
+/* PALETTE */
+.palette{display:flex;height:72px;border-radius:4px;overflow:hidden;margin:20px 0 16px;}
+.sw{flex:1;display:flex;align-items:flex-end;padding:8px 10px;}
+.sw-inner{display:flex;flex-direction:column;gap:2px;}
+.sw-name{font-size:9px;font-weight:500;letter-spacing:0.06em;}
+.sw-hex{font-family:'Courier Prime',monospace;font-size:8px;opacity:0.6;}
+.sw-dark .sw-name,.sw-dark .sw-hex{color:rgba(242,232,213,0.85);}
+.col-descs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:16px;}
+@media(max-width:560px){.col-descs{grid-template-columns:1fr 1fr;}}
+.col-d{font-size:12px;color:var(--muted);line-height:1.5;}
+.col-d strong{display:block;font-size:12px;font-weight:500;color:var(--cream-dim);margin-bottom:3px;}
+
+/* TYPE */
+.type-samples{margin:20px 0;display:flex;flex-direction:column;gap:24px;}
+.ts{padding-bottom:24px;border-bottom:0.5px solid var(--border-lt);}
+.ts:last-child{border-bottom:none;padding-bottom:0;}
+.ts-meta{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
+
+/* ATTR */
+.attr-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0;}
+@media(max-width:560px){.attr-grid{grid-template-columns:1fr;}}
+.attr{border:0.5px solid var(--border-lt);border-radius:4px;padding:20px 18px;background:var(--bg2);}
+.attr-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--cream);margin-bottom:7px;}
+.attr p{font-size:13px;margin-bottom:0;}
+
+/* VOICE */
+.voice-block{border:0.5px solid var(--border);border-radius:4px;background:var(--bg2);overflow:hidden;margin:16px 0;}
+.voice-row{padding:16px 22px;border-bottom:0.5px solid var(--border-lt);font-size:14px;color:var(--cream-dim);line-height:1.75;}
+.voice-row:last-child{border-bottom:none;}
+.voice-row strong{color:var(--cream);font-weight:500;}
+.do-dont{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;}
+@media(max-width:560px){.do-dont{grid-template-columns:1fr;}}
+.do-box,.dont-box{border-radius:4px;padding:20px 18px;}
+.do-box{background:rgba(60,80,30,0.25);border:0.5px solid rgba(120,160,60,0.25);}
+.dont-box{background:rgba(100,20,20,0.2);border:0.5px solid rgba(180,60,50,0.25);}
+.box-head{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;display:block;}
+.do-box .box-head{color:#8aac4a;}
+.dont-box .box-head{color:#c05050;}
+.do-box ul,.dont-box ul{list-style:none;padding:0;}
+.do-box li{font-size:13px;color:rgba(200,230,160,0.7);padding:5px 0;border-bottom:0.5px solid rgba(120,160,60,0.12);}
+.dont-box li{font-size:13px;color:rgba(230,160,150,0.7);padding:5px 0;border-bottom:0.5px solid rgba(180,60,50,0.12);}
+.do-box li:last-child,.dont-box li:last-child{border-bottom:none;}
+.do-box li::before{content:'✓  ';opacity:0.7;}
+.dont-box li::before{content:'✗  ';opacity:0.7;}
+
+/* POSITIONING */
+.positioning{border-left:2px solid var(--red);padding:20px 26px;margin:20px 0;background:rgba(166,50,40,0.08);border-radius:0 4px 4px 0;}
+.positioning p{font-size:15px;font-style:italic;margin:0;}
+
+/* PILLS */
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;}
+.pill{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.1em;padding:5px 14px;border-radius:2px;border:0.5px solid;}
+.pill-no{color:#c05050;border-color:rgba(180,60,50,0.35);background:rgba(100,20,20,0.2);}
+.pill-yes{color:#8aac4a;border-color:rgba(120,160,60,0.3);background:rgba(60,80,30,0.2);}
+.pill-gold{color:var(--gold-lt);border-color:rgba(201,150,58,0.3);background:var(--gold-dim);}
+
+/* TOC */
+.toc{border:0.5px solid var(--border);border-radius:4px;padding:32px 32px 24px;margin-bottom:52px;background:var(--bg2);}
+.toc-label{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:block;}
+.toc a{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:0.5px solid var(--border-lt);text-decoration:none;color:var(--cream-dim);font-size:14px;font-weight:300;transition:color 0.2s;}
+.toc a:last-child{border-bottom:none;}
+.toc a:hover{color:var(--gold-lt);}
+.toc-n{font-family:'Courier Prime',monospace;font-size:10px;color:var(--gold);letter-spacing:0.1em;}
+
+/* STREAMS */
+.streams{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
+@media(max-width:560px){.streams{grid-template-columns:1fr;}}
+.stream{border:0.5px solid var(--border);border-radius:4px;padding:26px 22px;background:var(--bg2);position:relative;overflow:hidden;}
+.stream::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;}
+.stream.s1::after{background:var(--gold);}
+.stream.s2::after{background:var(--red-lt);}
+.stream-glyph{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:14px;display:block;}
+.stream.s1 .stream-glyph{color:var(--gold);}
+.stream.s2 .stream-glyph{color:var(--red-lt);}
+.stream-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--cream);margin-bottom:10px;}
+.stream p{font-size:13px;margin-bottom:0;}
+
+/* REF GRID */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0;}
+@media(max-width:560px){.ref-grid{grid-template-columns:1fr;}}
+.ref-card{background:var(--bg2);border:0.5px solid var(--border-lt);border-radius:4px;padding:20px 18px;}
+.ref-org{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;}
+.ref-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--cream);margin-bottom:8px;}
+.ref-takeaway{font-size:12px;color:var(--cream-dim);line-height:1.6;}
+
+/* INSIGHT */
+.insight-box{background:var(--bg2);border:0.5px solid var(--border);border-left:2px solid var(--gold);border-radius:0 4px 4px 0;padding:20px 24px;margin:20px 0;}
+.insight-box p{font-size:14px;margin-bottom:0;font-style:italic;}
+
+/* DIVIDER */
+.divider{height:0.5px;background:var(--border);margin:48px 0;}
+
+/* ── CALENDAR ── */
+.year-header{text-align:center;margin-bottom:52px;}
+.year-label{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;}
+.year-title{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--cream);}
+.year-sub{font-size:14px;color:var(--muted);margin-top:8px;}
+
+.month-block{margin-bottom:68px;}
+.month-head{display:flex;align-items:center;gap:16px;margin-bottom:22px;padding-bottom:12px;border-bottom:0.5px solid var(--border);}
+.month-num{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.2em;color:var(--gold);}
+.month-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--cream);}
+.month-cause{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.12em;color:var(--red-lt);padding:4px 12px;border:0.5px solid var(--red);border-radius:2px;margin-left:auto;flex-shrink:0;}
+
+.events-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+@media(max-width:620px){.events-grid{grid-template-columns:1fr;}}
+
+.event-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:4px;padding:24px 20px;position:relative;overflow:hidden;}
+.event-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.event-card.ev1::before{background:var(--gold);}
+.event-card.ev2::before{background:var(--red-lt);}
+.ev-tag{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:block;}
+.ev-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--cream);margin-bottom:10px;line-height:1.3;}
+.ev-meta{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+.ev-chip{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.08em;padding:3px 10px;border-radius:2px;}
+.ev-chip.date{color:var(--gold-lt);background:var(--gold-dim);border:0.5px solid rgba(201,150,58,0.25);}
+.ev-chip.venue{color:var(--cream-dim);background:var(--cream-faint);border:0.5px solid rgba(242,232,213,0.12);}
+.ev-chip.scale{color:#8aac4a;background:rgba(60,80,30,0.2);border:0.5px solid rgba(120,160,60,0.25);}
+.ev-chip.rev{color:var(--red-lt);background:rgba(166,50,40,0.15);border:0.5px solid rgba(166,50,40,0.3);}
+
+.ev-section{margin-top:12px;padding-top:12px;border-top:0.5px solid var(--border-lt);}
+.ev-section-label{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px;}
+.ev-section ul{list-style:none;padding:0;}
+.ev-section li{font-size:12px;color:var(--cream-dim);padding:3px 0;line-height:1.6;}
+.ev-section li::before{content:'— ';color:var(--gold);opacity:0.55;}
+.ev-section p{font-size:12px;margin-bottom:0;color:var(--cream-dim);}
+
+.month-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px;}
+@media(max-width:560px){.month-stats{grid-template-columns:1fr 1fr;}}
+.stat-box{background:var(--bg3);border:0.5px solid var(--border-lt);border-radius:4px;padding:14px 10px;text-align:center;}
+.stat-val{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold);display:block;}
+.stat-key{font-family:'Courier Prime',monospace;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:4px;display:block;}
+
+/* outline month (for Oct–Mar) */
+.month-outline{background:var(--bg2);border:0.5px solid var(--border-lt);border-radius:4px;padding:24px 22px;margin-bottom:14px;}
+.mo-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
+.mo-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--cream);}
+.mo-cause{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.12em;color:var(--red-lt);padding:3px 10px;border:0.5px solid var(--red);border-radius:2px;}
+.mo-events{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+@media(max-width:560px){.mo-events{grid-template-columns:1fr;}}
+.mo-ev{padding:14px 16px;border-radius:4px;border:0.5px solid var(--border-lt);}
+.mo-ev.type1{border-top:2px solid var(--gold);}
+.mo-ev.type2{border-top:2px solid var(--red-lt);}
+.mo-ev-label{font-family:'Courier Prime',monospace;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;}
+.mo-ev-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px;line-height:1.4;}
+.mo-ev-detail{font-size:11px;color:var(--cream-dim);line-height:1.6;}
+.mo-ev-detail span{color:var(--gold-lt);}
+.mo-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.mo-stat{background:var(--bg3);border-radius:3px;padding:8px 6px;text-align:center;}
+.mo-stat-val{font-family:'Courier Prime',monospace;font-size:11px;color:var(--gold);display:block;font-weight:700;}
+.mo-stat-key{font-size:9px;color:var(--muted);}
+
+/* ── PLAN ── */
+.pillars-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:20px 0;}
+@media(max-width:600px){.pillars-grid{grid-template-columns:1fr;}}
+.pillar{background:var(--bg2);border:0.5px solid var(--border-lt);border-radius:4px;padding:20px 18px;}
+.pillar-icon{font-size:10px;font-family:'Courier Prime',monospace;letter-spacing:0.2em;color:var(--gold);display:block;margin-bottom:10px;text-transform:uppercase;}
+.pillar-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--cream);margin-bottom:8px;}
+.pillar ul{list-style:none;padding:0;}
+.pillar li{font-size:12px;color:var(--cream-dim);padding:4px 0;border-bottom:0.5px solid var(--border-lt);line-height:1.5;}
+.pillar li:last-child{border-bottom:none;}
+.pillar li::before{content:'· ';color:var(--gold);}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0;}
+@media(max-width:560px){.kpi-grid{grid-template-columns:1fr 1fr;}}
+.kpi{background:var(--bg2);border:0.5px solid var(--border);border-radius:4px;padding:16px 14px;}
+.kpi-label{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;}
+.kpi-val{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--gold);}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+
+.phase-block{margin-bottom:52px;}
+.phase-head{display:flex;align-items:center;gap:16px;padding:18px 22px;background:var(--bg2);border:0.5px solid var(--border);border-radius:4px;position:relative;overflow:hidden;margin-bottom:24px;}
+.phase-head::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;}
+.phase-head.p1::before{background:var(--gold);}
+.phase-head.p2::before{background:var(--red-lt);}
+.phase-head.p3::before{background:var(--green-lt);}
+.phase-num{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.2em;color:var(--muted);}
+.phase-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;color:var(--cream);}
+.phase-period{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.14em;color:var(--gold);margin-left:auto;}
+
+.revenue-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
+.revenue-table th{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);padding:10px 14px;text-align:left;border-bottom:0.5px solid var(--border);}
+.revenue-table td{padding:10px 14px;color:var(--cream-dim);border-bottom:0.5px solid var(--border-lt);}
+.revenue-table tr.total td{color:var(--cream);font-weight:500;border-top:0.5px solid var(--border);border-bottom:none;}
+.revenue-table td:last-child,.revenue-table th:last-child{text-align:right;}
+.revenue-table td:last-child{color:var(--gold-lt);}
+.revenue-table tr.total td:last-child{color:var(--gold);}
+
+/* EVENT DEEP DIVE */
+.event-deep{background:var(--bg2);border:0.5px solid var(--border);border-radius:4px;margin:20px 0;overflow:hidden;}
+.ed-header{padding:22px 24px;border-bottom:0.5px solid var(--border);position:relative;}
+.ed-header::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.ed-header.gold::before{background:var(--gold);}
+.ed-header.red::before{background:var(--red-lt);}
+.ed-header.green::before{background:var(--green-lt);}
+.ed-num{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:block;}
+.ed-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--cream);margin-bottom:8px;}
+.ed-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.ed-chip{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.08em;padding:3px 10px;border-radius:2px;}
+.ed-chip.gold{color:var(--gold-lt);background:var(--gold-dim);border:0.5px solid rgba(201,150,58,0.25);}
+.ed-chip.muted{color:var(--cream-dim);background:var(--cream-faint);border:0.5px solid rgba(242,232,213,0.12);}
+.ed-chip.green{color:#8aac4a;background:rgba(60,80,30,0.2);border:0.5px solid rgba(120,160,60,0.25);}
+.ed-chip.red{color:var(--red-lt);background:rgba(166,50,40,0.15);border:0.5px solid rgba(166,50,40,0.3);}
+.ed-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+@media(max-width:620px){.ed-body{grid-template-columns:1fr;}}
+.ed-col{padding:20px 24px;border-right:0.5px solid var(--border-lt);}
+.ed-col:last-child{border-right:none;}
+.ed-col-label{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;}
+.ed-col ul{list-style:none;padding:0;}
+.ed-col li{font-size:12px;color:var(--cream-dim);padding:4px 0;border-bottom:0.5px solid var(--border-lt);line-height:1.6;}
+.ed-col li:last-child{border-bottom:none;}
+.ed-col li::before{content:'→ ';color:var(--gold);opacity:0.6;}
+.ed-col p{font-size:12px;color:var(--cream-dim);line-height:1.7;margin-bottom:0;}
+.ed-footer{display:grid;grid-template-columns:repeat(4,1fr);border-top:0.5px solid var(--border-lt);}
+@media(max-width:560px){.ed-footer{grid-template-columns:1fr 1fr;}}
+.ed-stat{padding:14px 16px;text-align:center;border-right:0.5px solid var(--border-lt);}
+.ed-stat:last-child{border-right:none;}
+.ed-stat-val{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold);display:block;}
+.ed-stat-key{font-family:'Courier Prime',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+
+.timeline{margin:16px 0;}
+.tl-row{display:flex;gap:20px;padding:14px 0;border-bottom:0.5px solid var(--border-lt);}
+.tl-row:last-child{border-bottom:none;}
+.tl-when{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.12em;color:var(--gold);min-width:90px;padding-top:2px;flex-shrink:0;}
+.tl-items{flex:1;}
+.tl-item{font-size:12px;color:var(--cream-dim);margin-bottom:4px;line-height:1.6;}
+.tl-item::before{content:'→ ';color:var(--gold);opacity:0.6;}
+
+/* FOOT */
+.foot{margin-top:64px;padding-top:22px;border-top:0.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.foot-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--cream);}
+.foot-logo span{color:var(--gold);}
+.foot-note{font-family:'Courier Prime',monospace;font-size:9px;color:var(--muted);letter-spacing:0.12em;text-align:right;}
+
+/* Revenue ramp table */
+.ramp-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:12px;}
+.ramp-table th{font-family:'Courier Prime',monospace;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);padding:8px 12px;text-align:left;border-bottom:0.5px solid var(--border);}
+.ramp-table td{padding:8px 12px;color:var(--cream-dim);border-bottom:0.5px solid var(--border-lt);vertical-align:top;}
+.ramp-table td:first-child{color:var(--cream);font-weight:500;white-space:nowrap;}
+.ramp-table td.num{font-family:'Courier Prime',monospace;color:var(--gold-lt);text-align:right;}
+.ramp-table tr.milestone td{background:rgba(201,150,58,0.07);}
+.ramp-table tr.target td{background:rgba(201,150,58,0.12);color:var(--cream);}
+.ramp-table tr.target td.num{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <div class="nav-brand">Ideate<span>4</span>Change</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="show('cover')">Overview</button>
+    <button class="nav-tab" onclick="show('brand')">Brand Guide</button>
+    <button class="nav-tab" onclick="show('calendar')">Calendar</button>
+    <button class="nav-tab" onclick="show('plan')">Plan of Action</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════ COVER ═══════════════════ -->
+<div id="cover" class="section-page active">
+  <div class="cover">
+    <div class="cover-grain"></div>
+    <div class="cover-rule-top">
+      <span class="cover-parent">Care4Poor &nbsp;·&nbsp; Internal Master Document</span>
+      <span class="cover-doctype">v2.0 &nbsp;·&nbsp; July 2026</span>
+    </div>
+    <div class="cover-body">
+      <div class="cover-eyebrow">Ideate4Change &nbsp;·&nbsp; Est. July 2026</div>
+      <div class="cover-rule-thin" style="width:48px;height:0.5px;background:var(--gold);margin-bottom:28px;"></div>
+      <div class="cover-name">Ideate<span class="four">4</span></div>
+      <div class="cover-name-change">Change</div>
+      <div class="cover-tagline">"Ideas that challenge. Causes that matter."</div>
+      <div class="cover-sub">Complete operational foundation for I4C — a <em>Care4Poor</em> vertical dedicated to school and academic innovation, ideation competitions, and skill workshops. Covers <em>Brand Identity</em>, a full <em>9-month Event Calendar</em>, and a detailed <em>Plan of Action</em> with a ₹1–1.5 lac/month revenue trajectory.</div>
+    </div>
+    <div class="cover-foot">
+      <div class="cover-foot-left">A vertical of <span>Care4Poor</span> &nbsp;·&nbsp; Academia &amp; Innovation</div>
+      <div class="cover-foot-right">Admin Head Document · v2.0<br>Confidential &nbsp;·&nbsp; Internal Use</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="toc">
+      <span class="toc-label">Document Sections</span>
+      <a href="#" onclick="show('brand');return false;"><span>Brand Identity Guide — Name, mission, palette, voice, guardrails</span><span class="toc-n">01</span></a>
+      <a href="#" onclick="show('calendar');return false;"><span>Event Calendar — July 2026 – March 2027 · 2 events/month · Full briefs for first 3 months, structured outlines for all 9</span><span class="toc-n">02</span></a>
+      <a href="#" onclick="show('plan');return false;"><span>Plan of Action — Revenue model, ₹1.5L trajectory, 3-event deep-dives, full-year KPIs, immediate next steps</span><span class="toc-n">03</span></a>
+    </div>
+    <div class="insight-box">
+      <p>Core strategic decision: one vertical done exceptionally well. The academic innovation space is concentrated, reachable, and underserved by quality events. Two outstanding events in July are worth more than six mediocre ones across categories. Revenue scales by increasing event quality, ticket price, and sponsor value — not by diluting the brand.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ BRAND ═══════════════════ -->
+<div id="brand" class="section-page">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-label">Section 01</span>
+      <div class="sec-title">Brand Identity Guide</div>
+      <p class="sec-desc">How I4C presents itself, what it stands for, how it sounds, and what it will never be.</p>
+    </div>
+
+    <!-- 01 NAME -->
+    <div class="chapter">
+      <div class="ch-head"><span class="ch-num">01</span><h2 class="ch-title">Name &amp; Wordmark</h2></div>
+      <div class="wm-block">
+        <span class="wm-parent">Care4Poor presents</span>
+        <div class="wm-name">Ideate<span class="four">4</span>Change</div>
+        <span class="wm-short">Shorthand: I4C &nbsp;·&nbsp; The numeral is never substituted with the word "for"</span>
+        <div class="wm-tagline">"Ideas that challenge. Causes that matter."</div>
+      </div>
+      <p>The numeral "4" carries the Care4Poor DNA — deliberate, purposeful, immediately recognisable as part of the same family. In all written communication the full name is <em>Ideate4Change</em>. In shorthand contexts, <em>I4C</em>. Never written as "Ideate for Change."</p>
+      <p>The word <em>Ideate</em> is the brand's verb — it positions I4C not as an event organiser but as an action. To ideate is to generate, challenge assumptions, and build from nothing. Combined with <em>4Change</em>, it tells the entire story: sharp young minds generating ideas that move the world, while the money those ideas raise moves causes forward.</p>
+    </div>
+
+    <!-- 02 TAGLINE -->
+    <div class="chapter">
+      <div class="ch-head"><span class="ch-num">02</span><h2 class="ch-title">Tagline &amp; Motto</h2></div>
+      <span class="label">Primary tagline</span>
+      <div class="tagline-primary">"Ideas that challenge.<br>Causes that matter."</div>
+      <span class="label" style="margin-top:22px">Secondary tagline</span>
+      <div class="tagline-sec">"Where the classroom meets the cause."</div>
+      <span class="label" style="margin-top:8px">Event stamp</span>
+      <div style="margin-top:8px"><span class="stamp">An I4C Event</span></div>
+      <p style="margin-top:22px">The primary tagline declares what I4C is without explaining it. <em>Ideas</em> = the competitions, challenges, and workshops; <em>causes</em> = the charitable mission that every event funds. It does not exhort or motivate — it states. The secondary tagline is used in school outreach and editorial contexts.</p>
+    </div>
+
+    <!-- 03 MISSION -->
+    <div class="chapter">
+      <div class="ch-head"><span class="ch-num">03</span><h2 class="ch-title">Mission Statement</h2></div>
+      <div class="manifesto">
+        <p>I4C curates high-quality academic and innovation events — competitions, workshops, and ideation challenges — for school and college students who are ambitious, intellectually restless, and ready to act.</p>
+        <p>Every event is built around a named cause. Every registration fee and sponsor rupee funds it. Every winner is a voice that has earned the stage.</p>
+        <p>We are not a school fest. We are not a corporate workshop. We are the space where the sharpest young minds come to prove what they're made of — and leave knowing their brilliance changed something real.</p>
+      </div>
+    </div>
+
+    <!-- 04 FORMATS -->
+    <div class="chapter">
+      <div class="ch-head"><span class="ch-num">04</span><h2 class="ch-title">What We Do — The Two Formats</h2></div>
+      <div class="streams">
+        <div class="stream s1">
+          <span class="stream-glyph">— Format I</span>
+          <div class="stream-title">Competitions &amp; Challenges</div>
+          <p>Ideathons, innovation challenges, mini-Shark Tank pitch competitions, chaos labs, future tech expos. Structured, high-stakes, shareable outcomes. Build I4C's reputation for rigour and attract ambitious students and school/college partnerships.</p>
+        </div>
+        <div class="stream s2">
+          <span class="stream-glyph">— Format II</span>
+          <div class="stream-title">Workshops &amp; Masterclasses</div>
+          <p>AI literacy, personal finance, entrepreneurship, public speaking, stock market, digital safety, content creation. Expert-led, skill-building, immediately applicable. Stable registration revenue, easier to produce, deeper audience relationship.</p>
+        </div>
+      </div>
+      <p>Both formats always connect to the month's cause. A personal finance workshop in September might tackle how financial literacy can lift families out of poverty — the cause isn't a footnote, it's the brief. The event IS the fundraiser.</p>
+    </div>
+
+    <!-- 05 PALETTE -->
+    <div class="chapter">
+      <div class="ch-head"><span class="ch-num">05</span><h2 class="ch-title">Colour Palette</h2></div>
+      <div class="palette">
+        <div class="sw sw-dark" style="background:#0e0c0a;flex:1.2"><div class="sw-inner"><div class="sw-name">Noir</div><div class="sw-hex">#0e0c0a</div></div></div>
+        <div class="sw sw-dark" style="background:#C9963A;flex:1"><div class="sw-inner"><div class="sw-name">Gold</div><div class="sw-hex">#c9963a</div></div></div>
+        <div class="sw sw-dark" style="background:#A63228;flex:1"><div class="sw-inner"><div class="sw-name">Crimson</div><div class="sw-hex">#a63228</div></div></div>
+        <div class="sw sw-dark" style="background:#2a2018;flex:1"><div class="sw-inner"><div class="sw-name">Ember</div><div class="sw-hex">#2a2018</div></div></div>
+        <div class="sw" style="background:#F2E8D5;flex:1.2"><div class="sw-inner"><div class="sw-name" style="color:rgba(14,12,10,0.7)">Parchment</div><div class="sw-hex" style="color:rgba(14,12,10,0.5)">#f2e8d5</div></div></div>
+      </div>
+      <div class="col-descs">
+        <div class="col-d"><strong>Noir</strong>Primary background. The room before it begins.</div>
+        <div class="col-d"><strong>Gold</strong>Brand accent. Authority, intellect, literary prestige.</div>
+        <div class="col-d"><strong>Crimson</strong>Urgency. Cause energy. CTAs and callouts.</div>
+        <div class="col-d"><strong>Ember</strong>Card and section surfaces. Warm dark.</div>
+        <div class="col-d"><strong>Parchment</strong>Body text, print collateral. Analogue warmth.</div>
+      </div>
+      <p>Deliberately intellectual and warm — closer to a prestigious journal or historic institution than a startup event brand. The palette communicates: this is serious, and worth your time.</p>
+    </div>
+
+    <!-- 06 TYPOGRAPHY -->
+    <div class="chapter">
+      <div class="ch-head"><span class="ch-num">06</span><h2 class="ch-title">Typography</h2></div>
+      <div class="type-samples">
+        <div class="ts">
+          <span class="ts-meta">Display — Playfair Display Bold · Titles, covers, event names</span>
+          <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--cream);line-height:1.1;letter-spacing:-0.02em">The National<br>Ideathon</div>
+        </div>
+        <div class="ts">
+          <span class="ts-meta">Italic Serif — Playfair Display Italic · Taglines, pull quotes</span>
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:21px;color:var(--cream-dim);line-height:1.35">"The competition is the classroom."</div>
+        </div>
+        <div class="ts">
+          <span class="ts-meta">Body — Outfit Light · All copy, descriptions, UI text</span>
+          <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:300;color:var(--cream-dim);line-height:1.85">Registrations open. Teams of 3. Every submission funds the cause. Every finalist earns the stage. This is I4C — where the best ideas in the room change something real.</div>
+        </div>
+        <div class="ts">
+          <span class="ts-meta">Mono — Courier Prime · Labels, dates, event codes, metadata</span>
+          <div style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--gold);letter-spacing:0.14em">I4C — EVENT 01 · JULY 2026 · NEW DELHI</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 PERSONALITY -->
+    <div class="chapter">
+      <div class="ch-head"><span class="ch-num">07</span><h2 class="ch-title">Brand Personality</h2></div>
+      <div class="attr-grid">
+        <div class="attr"><div class="attr-title">Intellectually rigorous</div><p>Our events have a point of view. Judging is meritocratic, formats are thoughtfully designed, the bar is high. We attract students who want to be challenged, not just celebrated.</p></div>
+        <div class="attr"><div class="attr-title">Quietly prestigious</div><p>We don't announce ourselves loudly. We let the quality of our events, speakers, and winners build a reputation that schools and students come to us for.</p></div>
+        <div class="attr"><div class="attr-title">Genuinely purposeful</div><p>The cause is real. The funds go there. We never use "charity" as a badge — we use it as a consequence. Students come for the event; they leave knowing they did something.</p></div>
+        <div class="attr"><div class="attr-title">Elegantly designed</div><p>Every touchpoint — certificate, brief, backdrop, social post — is treated as brand collateral. Nothing is generic. Nothing is hastily assembled.</p></div>
+        <div class="attr"><div class="attr-title">Student-first</div><p>We speak the language of ambitious students — their references, their hunger, their frustration with systems that underestimate them. We are, unambiguously, on their side.</p></div>
+        <div class="attr"><div class="attr-title">Urgently optimistic</div><p>The causes are serious. But I4C's energy is agency, not grief. Come here and leave believing you can actually change something — because you just did.</p></div>
+      </div>
+    </div>
+
+    <!-- 08 VOICE -->
+    <div class="chapter">
+      <div class="ch-head"><span class="ch-num">08</span><h2 class="ch-title">Voice &amp; Tone</h2></div>
+      <div class="voice-block">
+        <div class="voice-row"><strong>Sharp but never cold.</strong> Write like someone who has thought hard about this and still gets excited when a student's idea lands. Precision without distance.</div>
+        <div class="voice-row"><strong>Purposeful but never preachy.</strong> We believe in causes deeply. We don't lecture. The event funds the cause — that mechanism speaks for itself.</div>
+        <div class="voice-row"><strong>Ambitious but never arrogant.</strong> We set the bar high because we believe students will clear it. That's faith, not gatekeeping.</div>
+        <div class="voice-row"><strong>Institutional but never bureaucratic.</strong> The brand should feel like a prestigious institution — reliable, consistent, serious — but the writing stays alive and human.</div>
+      </div>
+      <div class="do-dont">
+        <div class="do-box">
+          <span class="box-head">We say</span>
+          <ul>
+            <li>An I4C ideathon</li>
+            <li>Build the argument. Win the room.</li>
+            <li>Your idea funds the cause.</li>
+            <li>The brief is live. The clock is running.</li>
+            <li>Curated for the ambitious.</li>
+            <li>Twelve teams. One cause. No ceiling.</li>
+          </ul>
+        </div>
+        <div class="dont-box">
+          <span class="box-head">We don't say</span>
+          <ul>
+            <li>Join us for a fun event!</li>
+            <li>Support a great cause!!</li>
+            <li>Register now before it's too late!</li>
+            <li>We're so excited to announce...</li>
+            <li>Amazing learning opportunity</li>
+            <li>Empowering tomorrow's leaders!!!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 09 POSITIONING -->
+    <div class="chapter">
+      <div class="ch-head"><span class="ch-num">09</span><h2 class="ch-title">Positioning Statement</h2></div>
+      <span class="label">Internal use — strategy and partnerships</span>
+      <div class="positioning">
+        <p>For academically ambitious school and college students in Indian cities — I4C is the only academic event series that combines the intellectual rigour of a well-designed competition or workshop with the moral clarity of a single, named cause per event. Unlike school fests that prioritise participation over quality, or NGO events that use students as volunteers rather than protagonists, I4C puts the student's mind at the centre — and makes both the event and the cause better for it.</p>
+      </div>
+    </div>
+
+    <!-- 10 GUARDRAILS -->
+    <div class="chapter">
+      <div class="ch-head"><span class="ch-num">10</span><h2 class="ch-title">Brand Guardrails</h2></div>
+      <span class="label">What I4C is not</span>
+      <div class="pills">
+        <span class="pill pill-no">Not a school fest</span>
+        <span class="pill pill-no">Not a charity drive</span>
+        <span class="pill pill-no">Not an open mic / debate night</span>
+        <span class="pill pill-no">Not a brand activation</span>
+        <span class="pill pill-no">Not a networking mixer</span>
+        <span class="pill pill-no">Not a participation trophy culture</span>
+      </div>
+      <span class="label" style="margin-top:18px">What I4C always is</span>
+      <div class="pills">
+        <span class="pill pill-yes">Rigorous, not elitist</span>
+        <span class="pill pill-yes">Purposeful, not preachy</span>
+        <span class="pill pill-yes">Curated, not crowded</span>
+        <span class="pill pill-yes">Student-first, cause-carried</span>
+      </div>
+      <span class="label" style="margin-top:18px">Core commitments</span>
+      <div class="pills">
+        <span class="pill pill-gold">One cause per month</span>
+        <span class="pill pill-gold">2 events per month</span>
+        <span class="pill pill-gold">Academic focus only (Phase 1)</span>
+        <span class="pill pill-gold">Meritocratic judging always</span>
+        <span class="pill pill-gold">Transparent fund allocation</span>
+        <span class="pill pill-gold">Incrementally scaling to ₹1.5L/month</span>
+      </div>
+    </div>
+
+    <!-- 11 REFERENCE -->
+    <div class="chapter">
+      <div class="ch-head"><span class="ch-num">11</span><h2 class="ch-title">Reference Models</h2></div>
+      <p>I4C adapts proven formats at a focused scale with a charitable layer — rather than inventing from scratch.</p>
+      <div class="ref-grid">
+        <div class="ref-card"><span class="ref-org">Model</span><div class="ref-title">Shark Tank India (Junior format)</div><div class="ref-takeaway">Takeaway: Pitch competitions are viscerally engaging, create natural video content, and the format is already understood by Indian students. Replicate: Mini-Shark Tank as a recurring I4C format — student founders pitch social ventures to a judge panel. Winner gets a small grant from cause fund.</div></div>
+        <div class="ref-card"><span class="ref-org">Model</span><div class="ref-title">MIT / TEDx Student Chapters</div><div class="ref-takeaway">Takeaway: Prestige through curation, not size. A 50-person MIT demo day is more prestigious than a 500-person conference. Replicate: Quality of thought over headcount. Invest in certificate design, expert judges, and publishing notable student ideas from Day 1.</div></div>
+        <div class="ref-card"><span class="ref-org">Model</span><div class="ref-title">Enactus India / YouthCo (social enterprise competitions)</div><div class="ref-takeaway">Takeaway: Cause-integrated competition. Teams solve real social problems as the competition brief. Replicate: Every I4C ideathon brief is tied to that month's cause. Winners' solutions shared with beneficiary NGO.</div></div>
+        <div class="ref-card"><span class="ref-org">Model</span><div class="ref-title">MUN Circuits (self-replicating community)</div><div class="ref-takeaway">Takeaway: Past participants become next year's organisers and referrals. The community fuels growth. Replicate: Build alumni + volunteer pool from Event 01. Past participants get early access, volunteer roles, and brand association.</div></div>
+      </div>
+    </div>
+
+    <div class="foot"><div class="foot-logo">Ideate<span>4</span>Change</div><div class="foot-note">Brand Identity Guide v2.0<br>Care4Poor Vertical · Est. July 2026</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CALENDAR ═══════════════════ -->
+<div id="calendar" class="section-page">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-label">Section 02</span>
+      <div class="sec-title">Event Calendar</div>
+      <p class="sec-desc">9 months · 2 events/month · 1 cause/month · Full briefs for July–September, structured outlines with format, audience, scale, and revenue targets for October–March.</p>
+    </div>
+
+    <div class="year-header">
+      <span class="year-label">Academic Year</span>
+      <div class="year-title">July 2026 — March 2027</div>
+      <div class="year-sub">18 events &nbsp;·&nbsp; 9 causes &nbsp;·&nbsp; Revenue ramp: ₹40K → ₹1.5L/month</div>
+    </div>
+
+    <!-- JULY -->
+    <div class="month-block">
+      <div class="month-head">
+        <span class="month-num">M·01</span>
+        <div class="month-name">July 2026</div>
+        <span class="month-cause">Cause: Clean Water Access</span>
+      </div>
+      <div class="events-grid">
+        <div class="event-card ev1">
+          <span class="ev-tag">Event 01 · Competition</span>
+          <div class="ev-title">Future Founders Launchpad — Social Venture Pitch</div>
+          <div class="ev-meta">
+            <span class="ev-chip date">Week 1–2, July</span>
+            <span class="ev-chip venue">College campus / co-working, Delhi NCR</span>
+            <span class="ev-chip scale">70–100 participants</span>
+            <span class="ev-chip rev">Rev target: ₹45–55K</span>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Format</span>
+            <p>2-stage: online application with a one-page venture concept (clean water / social impact brief) → top 10 teams pitch live to a panel of founders and investors. Opens to college students (Yr 1–3) in addition to school. Judged on innovation, feasibility, and social impact. Winner gets ₹5,000 seed grant from cause fund + mentorship session.</p>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Target Audience &amp; Reach</span>
+            <ul>
+              <li>School Gr. 11–12 + college Yr. 1–3</li>
+              <li>LinkedIn, college entrepreneurship cells, startup communities</li>
+              <li>School science and business departments</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Objectives</span>
+            <ul>
+              <li>Launch I4C with a high-stakes pitch format that builds instant credibility</li>
+              <li>Partner with 1 college entrepreneurship cell</li>
+              <li>₹10,000+ to clean water cause fund</li>
+              <li>Attract first ₹40K+ sponsor</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Revenue</span>
+            <ul>
+              <li>Registration: ₹800/team (3) × 15 = ₹12,000</li>
+              <li>Sponsor (sustainability / water brand / FMCG CSR): ₹30,000–40,000</li>
+              <li>Total: ₹42,000–52,000</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Volunteers</span>
+            <ul>
+              <li>10–12: 2 evaluators, 3 logistics, 2 social/content, 1 MC, 2 admin, 1 judge liaison</li>
+            </ul>
+          </div>
+        </div>
+        <div class="event-card ev2">
+          <span class="ev-tag">Event 02 · Workshop</span>
+          <div class="ev-title">Digital Safety Workshop — "Stay Safe, Stay Smart"</div>
+          <div class="ev-meta">
+            <span class="ev-chip date">Week 3, July</span>
+            <span class="ev-chip venue">In-person + School tie-up (bulk seats)</span>
+            <span class="ev-chip scale">60–80 participants</span>
+            <span class="ev-chip rev">Rev target: ₹25–30K</span>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Format</span>
+            <p>2.5-hour workshop covering: cyberbullying, phishing and scam awareness, social media privacy settings, safe digital footprint, and what to do in a crisis. Designed for students AND parents (can attend together — dual audience). Partner with a school for bulk institutional seats (school buys 30–40 seats at ₹250/head, individuals buy at ₹400). High PR value — schools love this format.</p>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Target Audience &amp; Reach</span>
+            <ul>
+              <li>Grades 7–12 + parents — broadest audience of any I4C event</li>
+              <li>School bulk purchase model — approach 2–3 schools directly</li>
+              <li>Reach via parent WhatsApp groups, school circulars</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Revenue</span>
+            <ul>
+              <li>School bulk: 35 seats × ₹250 = ₹8,750</li>
+              <li>Individual: 30 seats × ₹400 = ₹12,000</li>
+              <li>Sponsor (cybersecurity / telecom): ₹5,000–10,000</li>
+              <li>Total: ₹25,000–30,000</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Volunteers</span>
+            <ul>
+              <li>5–6: 1 facilitator support, 2 logistics, 1 registration, 1–2 social</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="month-stats">
+        <div class="stat-box"><span class="stat-val">2</span><span class="stat-key">Events</span></div>
+        <div class="stat-box"><span class="stat-val">130–180</span><span class="stat-key">Participants</span></div>
+        <div class="stat-box"><span class="stat-val">₹70–80K</span><span class="stat-key">Revenue Target</span></div>
+        <div class="stat-box"><span class="stat-val">16–18</span><span class="stat-key">Volunteers</span></div>
+      </div>
+    </div>
+
+    <!-- AUGUST -->
+    <div class="month-block">
+      <div class="month-head">
+        <span class="month-num">M·02</span>
+        <div class="month-name">August 2026</div>
+        <span class="month-cause">Cause: Child Education Access</span>
+      </div>
+      <div class="events-grid">
+        <div class="event-card ev1">
+          <span class="ev-tag">Event 03 · Competition</span>
+          <div class="ev-title">Mini Shark Tank — "Pitch for a Cause"</div>
+          <div class="ev-meta">
+            <span class="ev-chip date">Week 2, August</span>
+            <span class="ev-chip venue">School hall / rented space, Delhi NCR</span>
+            <span class="ev-chip scale">40–50 participants</span>
+            <span class="ev-chip rev">Rev target: ₹20–25K</span>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Format</span>
+            <p>Teams of 3 (Grades 9–12) pitch a venture or solution to an education access problem — 5 minutes pitch + 3 min Q&amp;A from judge panel. 10 teams apply, 6 shortlisted to pitch live. 3-judge panel (entrepreneur / educator / Care4Poor representative). Trophy + certificate + ₹2,000 seed grant from cause fund for winner.</p>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Target Audience &amp; Reach</span>
+            <ul>
+              <li>Grades 9–12, Delhi NCR, 3–4 schools</li>
+              <li>School coordinators + WhatsApp + Instagram</li>
+              <li>Framed as: "Your first pitch. Your first stage."</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Objectives</span>
+            <ul>
+              <li>Expand I4C's school network with a proven, high-engagement format</li>
+              <li>Get 2–3 additional school institutional sign-offs</li>
+              <li>Confirm 1 mid-tier sponsor (ed-tech / coaching centre)</li>
+              <li>₹2,000–3,000 of revenue goes to cause fund</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Revenue</span>
+            <ul>
+              <li>Registration: ₹600/team × 10 = ₹6,000</li>
+              <li>Sponsor (ed-tech / coaching): ₹15,000–20,000</li>
+              <li>Total: ₹20,000–25,000</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Volunteers</span>
+            <ul>
+              <li>6–7: 1 MC, 2 logistics, 1 reg desk, 2 social/content, 1 judge liaison</li>
+            </ul>
+          </div>
+        </div>
+        <div class="event-card ev2">
+          <span class="ev-tag">Event 04 · Workshop</span>
+          <div class="ev-title">Personal Finance for Students — "Money 101"</div>
+          <div class="ev-meta">
+            <span class="ev-chip date">Week 4, August</span>
+            <span class="ev-chip venue">Online / Hybrid, 2 hours</span>
+            <span class="ev-chip scale">35–50 participants</span>
+            <span class="ev-chip rev">Rev target: ₹12–15K</span>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Format</span>
+            <p>2-hour interactive online workshop. Topics: budgeting, savings, SIPs, mutual funds basics, mock portfolio activity. Delivered by a young finance professional or SEBI-registered advisor. Quiz rounds + live mock investment game. Certificate issued.</p>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Target Audience &amp; Reach</span>
+            <ul>
+              <li>Grades 10–12 + first-year college</li>
+              <li>Instagram, LinkedIn, school groups</li>
+              <li>Position as: "What school never taught you"</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Revenue</span>
+            <ul>
+              <li>Registration: ₹300/person × 40 = ₹12,000</li>
+              <li>Total: ₹12,000–15,000</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Volunteers</span>
+            <ul>
+              <li>3–4: 1 co-host/facilitator support, 2 breakout monitors, 1 social</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="month-stats">
+        <div class="stat-box"><span class="stat-val">2</span><span class="stat-key">Events</span></div>
+        <div class="stat-box"><span class="stat-val">75–100</span><span class="stat-key">Participants</span></div>
+        <div class="stat-box"><span class="stat-val">₹35–40K</span><span class="stat-key">Revenue Target</span></div>
+        <div class="stat-box"><span class="stat-val">10–11</span><span class="stat-key">Volunteers</span></div>
+      </div>
+    </div>
+
+    <!-- SEPTEMBER -->
+    <div class="month-block">
+      <div class="month-head">
+        <span class="month-num">M·03</span>
+        <div class="month-name">September 2026</div>
+        <span class="month-cause">Cause: Hunger &amp; Child Nutrition</span>
+      </div>
+      <div class="events-grid">
+        <div class="event-card ev1">
+          <span class="ev-tag">Event 05 · Competition</span>
+          <div class="ev-title">Case Cracker — Business Strategy Challenge</div>
+          <div class="ev-meta">
+            <span class="ev-chip date">Week 2, September</span>
+            <span class="ev-chip venue">In-person, college campus / co-working, Delhi NCR</span>
+            <span class="ev-chip scale">50–70 participants</span>
+            <span class="ev-chip rev">Rev target: ₹30–35K</span>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Format</span>
+            <p>Teams of 3–4 receive a real-world business case study at 9 AM — a social enterprise facing a growth, operations, or funding challenge tied to child nutrition. 4 hours to research, build a strategy deck, and present a 7-minute solution to a panel of founders and business professionals. Judged on analytical depth, creativity, and feasibility. Top 3 teams win. Winner's strategy shared with the featured organisation. The format MUN students already love — but with real stakes.</p>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Target Audience &amp; Reach</span>
+            <ul>
+              <li>Grades 10–12 + first-year college, 4–6 schools</li>
+              <li>Push: "One case. Four hours. The solution that could actually ship."</li>
+              <li>LinkedIn + Instagram — positions I4C as the place where sharp thinkers compete</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Objectives</span>
+            <ul>
+              <li>Introduce a repeatable, high-participation competition format alongside Shark Tank</li>
+              <li>Attract MUN/debate/quiz circuit students — a new audience segment for I4C</li>
+              <li>₹5,000–7,000 to hunger &amp; nutrition cause fund</li>
+              <li>2 new school partnerships</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Revenue</span>
+            <ul>
+              <li>Registration: ₹700/team (3–4) × 12 teams = ₹8,400</li>
+              <li>Sponsor (FMCG / food brand / ed-tech): ₹20,000–25,000</li>
+              <li>Total: ₹28,000–33,000</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Volunteers</span>
+            <ul>
+              <li>8–10: 2 case mentors, 2 logistics, 1 MC, 2 social/content, 1 judge liaison</li>
+            </ul>
+          </div>
+        </div>
+        <div class="event-card ev2">
+          <span class="ev-tag">Event 06 · Workshop</span>
+          <div class="ev-title">AI for Everyone — Introductory AI Literacy Workshop</div>
+          <div class="ev-meta">
+            <span class="ev-chip date">Week 3, September</span>
+            <span class="ev-chip venue">In-person, capped at 40 seats</span>
+            <span class="ev-chip scale">35–45 participants</span>
+            <span class="ev-chip rev">Rev target: ₹20–25K</span>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Format</span>
+            <p>3-hour hands-on workshop. No coding required. Covers: what AI is and isn't, how to use AI tools for school/life, ethical considerations, and a mini-build session (students use a no-code AI tool to solve a small real problem). Led by a tech professional or AI researcher. Certificate issued. High demand format — waitlists help build FOMO.</p>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Target Audience &amp; Reach</span>
+            <ul>
+              <li>Grades 9–12 and first-year college, all streams</li>
+              <li>Instagram + LinkedIn — "AI literacy is the new English"</li>
+              <li>School tech coordinators, coding clubs</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Revenue</span>
+            <ul>
+              <li>Registration: ₹500–600/person × 40 = ₹20,000–24,000</li>
+            </ul>
+          </div>
+          <div class="ev-section">
+            <span class="ev-section-label">Volunteers</span>
+            <ul>
+              <li>4–5: 1 facilitator support, 2 tech helpers, 1 logistics, 1 social</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="month-stats">
+        <div class="stat-box"><span class="stat-val">2</span><span class="stat-key">Events</span></div>
+        <div class="stat-box"><span class="stat-val">85–115</span><span class="stat-key">Participants</span></div>
+        <div class="stat-box"><span class="stat-val">₹50–60K</span><span class="stat-key">Revenue Target</span></div>
+        <div class="stat-box"><span class="stat-val">13–15</span><span class="stat-key">Volunteers</span></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- OCT–MAR OUTLINES -->
+    <div class="chapter">
+      <div class="ch-head"><span class="ch-num">M·04–09</span><h2 class="ch-title">October 2026 — March 2027</h2></div>
+      <p>All 6 remaining months follow the same two-format structure. Below: cause, both event outlines with format, audience, and revenue targets. Full detailed briefs developed 6 weeks before each month.</p>
+
+      <!-- OCT -->
+      <div class="month-outline">
+        <div class="mo-head">
+          <div class="mo-title">October 2026</div>
+          <span class="mo-cause">Cause: Girls' Education</span>
+        </div>
+        <div class="mo-events">
+          <div class="mo-ev type1">
+            <span class="mo-ev-label">Event 07 · Competition</span>
+            <div class="mo-ev-title">Interschool STEM Fair — "Girls Who Build"</div>
+            <div class="mo-ev-detail">Interschool science and innovation fair. Teams of 2–4 from Gr. 8–12 present original STEM projects — working prototypes, experiments, or research papers. Special track for all-girls teams. Exhibition format: 30+ project booths, live demos, audience voting + 3-judge panel. Theme: technology solutions for girls' education access. Partner with school science departments. <span>Scale: 80–120 participants + 100+ visitors. Target revenue: ₹40–50K.</span></div>
+          </div>
+          <div class="mo-ev type2">
+            <span class="mo-ev-label">Event 08 · Workshop</span>
+            <div class="mo-ev-title">Build Your Own Brand — Personal Branding Workshop</div>
+            <div class="mo-ev-detail">3-hour workshop: LinkedIn, Instagram strategy, personal narrative, portfolio building. Expert: brand strategist / content creator. Certificate issued. School and college students. <span>Scale: 50–70 participants. Target revenue: ₹25–30K.</span></div>
+          </div>
+        </div>
+        <div class="mo-stats">
+          <div class="mo-stat"><span class="mo-stat-val">130–190</span><span class="mo-stat-key">Participants</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">₹70–80K</span><span class="mo-stat-key">Revenue</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">18–20</span><span class="mo-stat-key">Volunteers</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">6–7</span><span class="mo-stat-key">School Partners</span></div>
+        </div>
+      </div>
+
+      <!-- NOV -->
+      <div class="month-outline">
+        <div class="mo-head">
+          <div class="mo-title">November 2026</div>
+          <span class="mo-cause">Cause: Urban Poverty</span>
+        </div>
+        <div class="mo-events">
+          <div class="mo-ev type1">
+            <span class="mo-ev-label">Event 09 · Competition</span>
+            <div class="mo-ev-title">National Ideathon — Multi-City (Delhi + 1 more city)</div>
+            <div class="mo-ev-detail">First multi-city event. Online prelims open nationally, top teams per city compete in city-level finals. Urban poverty brief. First I4C event with genuine national positioning. Separate sponsors per city possible. <span>Scale: 150–250 participants. Target revenue: ₹80–1L.</span></div>
+          </div>
+          <div class="mo-ev type2">
+            <span class="mo-ev-label">Event 10 · Workshop</span>
+            <div class="mo-ev-title">Give an Hour — Industry Expert Masterclass Series</div>
+            <div class="mo-ev-detail">Multiple domain experts (founder, doctor, filmmaker, policy person) each give a focused 60-min session across one day. Students book individual or full-day slots. Modular, scalable, low production cost. <span>Scale: 80–120 participants. Target revenue: ₹30–40K.</span></div>
+          </div>
+        </div>
+        <div class="mo-stats">
+          <div class="mo-stat"><span class="mo-stat-val">230–370</span><span class="mo-stat-key">Participants</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">₹1.1–1.4L</span><span class="mo-stat-key">Revenue</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">25+</span><span class="mo-stat-key">Volunteers</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">2</span><span class="mo-stat-key">Cities</span></div>
+        </div>
+      </div>
+
+      <!-- DEC -->
+      <div class="month-outline">
+        <div class="mo-head">
+          <div class="mo-title">December 2026</div>
+          <span class="mo-cause">Cause: Youth Mental Health</span>
+        </div>
+        <div class="mo-events">
+          <div class="mo-ev type1">
+            <span class="mo-ev-label">Event 11 · Competition</span>
+            <div class="mo-ev-title">Future Tech Expo — Student Project Showcase</div>
+            <div class="mo-ev-detail">Ticketed public showcase of student-built projects: AI tools, apps, hardware prototypes, social impact ventures. Exhibition + live demos + audience vote. Startup booths. Tie-up with college technical departments. Ticketed entry (₹150–200/visitor). <span>Scale: 200–300 participants + audience. Target revenue: ₹90K–1.1L.</span></div>
+          </div>
+          <div class="mo-ev type2">
+            <span class="mo-ev-label">Event 12 · Workshop</span>
+            <div class="mo-ev-title">Public Speaking &amp; Influence Lab</div>
+            <div class="mo-ev-detail">Half-day intensive: vocal presence, structure, on-camera confidence. Combines speaking skill with content creator mindset. Led by a media/speaking professional. Max 35 seats. High ticket price. <span>Scale: 30–40 participants. Target revenue: ₹25–35K.</span></div>
+          </div>
+        </div>
+        <div class="mo-stats">
+          <div class="mo-stat"><span class="mo-stat-val">230–340+</span><span class="mo-stat-key">Participants</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">₹1.1–1.4L</span><span class="mo-stat-key">Revenue</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">28–32</span><span class="mo-stat-key">Volunteers</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">10+</span><span class="mo-stat-key">Exhibitors</span></div>
+        </div>
+      </div>
+
+      <!-- JAN -->
+      <div class="month-outline">
+        <div class="mo-head">
+          <div class="mo-title">January 2027</div>
+          <span class="mo-cause">Cause: Climate Action</span>
+        </div>
+        <div class="mo-events">
+          <div class="mo-ev type1">
+            <span class="mo-ev-label">Event 13 · Competition</span>
+            <div class="mo-ev-title">Winter Innovation Carnival — Climate Edition</div>
+            <div class="mo-ev-detail">Full-day festival-style event across 3 cities. Format: sustainability project exhibition booths + live pitch stage + "Solve It" rapid challenge rounds + audience-voted "People's Choice" award. Open to school and college students. Carnival atmosphere with demo zones, sponsor stalls, and networking. CSR sponsor (FMCG or energy brand) to cover significant share of costs. Partner with college environment clubs. <span>Scale: 250–350 participants + audience. Target revenue: ₹1.1–1.3L.</span></div>
+          </div>
+          <div class="mo-ev type2">
+            <span class="mo-ev-label">Event 14 · Workshop</span>
+            <div class="mo-ev-title">Stock Market for Beginners — Mock Portfolio Game</div>
+            <div class="mo-ev-detail">Game-based 3-hour workshop: mutual funds, SIPs, index funds, reading charts. Participants run a mock portfolio live on a simulated platform. Competitive element — best-performing portfolio wins. Led by a SEBI-registered advisor. <span>Scale: 60–80 participants. Target revenue: ₹30–40K.</span></div>
+          </div>
+        </div>
+        <div class="mo-stats">
+          <div class="mo-stat"><span class="mo-stat-val">310–430</span><span class="mo-stat-key">Participants</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">₹1.4–1.7L</span><span class="mo-stat-key">Revenue</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">30–35</span><span class="mo-stat-key">Volunteers</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">3</span><span class="mo-stat-key">Cities</span></div>
+        </div>
+      </div>
+
+      <!-- FEB -->
+      <div class="month-outline">
+        <div class="mo-head">
+          <div class="mo-title">February 2027</div>
+          <span class="mo-cause">Cause: Digital Literacy Gap</span>
+        </div>
+        <div class="mo-events">
+          <div class="mo-ev type1">
+            <span class="mo-ev-label">Event 15 · Competition</span>
+            <div class="mo-ev-title">App Concept Hackathon — No-Code, Big Ideas</div>
+            <div class="mo-ev-detail">24-hour (or single-day) no-code hackathon. Teams build a working app prototype using tools like Glide, Bubble, or FlutterFlow — no programming required. Judged on UX, social impact, and viability. Partners: no-code platforms (sponsor in-kind/cash). <span>Scale: 150–250 participants. Target revenue: ₹90K–1.1L.</span></div>
+          </div>
+          <div class="mo-ev type2">
+            <span class="mo-ev-label">Event 16 · Workshop</span>
+            <div class="mo-ev-title">AI Workshop Series — Session 2: AI for Creators</div>
+            <div class="mo-ev-detail">Follow-up to August AI workshop, now focused on creators: AI tools for content, design, video scripting, and music. Practical, hands-on, creator-first. Builds on established I4C AI workshop brand recognition. <span>Scale: 60–80 participants. Target revenue: ₹35–45K.</span></div>
+          </div>
+        </div>
+        <div class="mo-stats">
+          <div class="mo-stat"><span class="mo-stat-val">210–330</span><span class="mo-stat-key">Participants</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">₹1.3–1.6L</span><span class="mo-stat-key">Revenue</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">32–38</span><span class="mo-stat-key">Volunteers</span></div>
+          <div class="mo-stat"><span class="mo-stat-val">3+</span><span class="mo-stat-key">Cities</span></div>
+        </div>
+      </div>
+
+      <!-- MAR -->
+      <div class="month-outline">
+        <div class="mo-head">
+          <div class="mo-title">March 2027</div>
+          <span class="mo-cause">Cause: Women's Safety</span>
+        </div>
+        <div class="mo-events">
+          <div class="mo-ev type1">
+            <span class="mo-ev-label">Event 17 · Competition (Flagship)</span>
+            <div class="mo-ev-title">I4C Grand Annual — National Ideathon + Pitch Finals</div>
+            <div class="mo-ev-detail">Year-end flagship. Combined format: ideathon finals + mini-Shark Tank. National-level. Top 20 teams from the year's circuit get a wildcard invite. Media coverage targeted. Award ceremony. Major sponsor (₹1L+). The I4C brand-making event of Year 1. <span>Scale: 400–600 participant
